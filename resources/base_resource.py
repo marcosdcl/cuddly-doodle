@@ -24,8 +24,6 @@ class BaseResource(Resource):
         data = request.json
         if data['id_'] == id:
             item = self.__dao.read_by_id(id)
-            # updated_item = item(**data)
-            # item.update(updated_item)
             for key, value in data.items():
                 setattr(item, key, value)
             return self.__dao.save(item)
